@@ -27,18 +27,18 @@ RUN apt-get install -y libqtwebkit-dev
 RUN cd /tmp && git clone https://github.com/joseirrazabal/webvfx.git -b mlt && cd /tmp/webvfx && qmake -r PREFIX=/usr MLT_SOURCE=/tmp/melted/mlt && make install
 
 # eliminando todo lo que se pueda
-RUN \
-    rm -r /tmp/melted && \
-    rm /tmp/build-melted.conf && \
-    rm -r /tmp/mlt-scripts && \
-    rm -r /tmp/webvfx && \
-    \
-    apt-get remove -y automake autoconf libtool intltool g++ libmp3lame-dev \
-    libgavl-dev libsamplerate-dev libxml2-dev libjack-dev libsox-dev libsdl-dev \
-    libgtk2.0-dev liboil-dev libsoup2.4-dev libqt4-dev libexif-dev libtheora-dev \
-    libvdpau-dev libvorbis-dev python-dev manpages manpages-dev g++ g++-4.6 git && \
-    \
-    apt-get -y autoclean && apt-get -y clean && apt-get -y autoremove && rm -rf /var/lib/apt/lists/*
+#RUN \
+#    rm -r /tmp/melted && \
+#    rm /tmp/build-melted.conf && \
+#    rm -r /tmp/mlt-scripts && \
+#    rm -r /tmp/webvfx && \
+#    \
+#    apt-get remove -y automake autoconf libtool intltool g++ libmp3lame-dev \
+#    libgavl-dev libsamplerate-dev libxml2-dev libjack-dev libsox-dev libsdl-dev \
+#    libgtk2.0-dev liboil-dev libsoup2.4-dev libqt4-dev libexif-dev libtheora-dev \
+#    libvdpau-dev libvorbis-dev python-dev manpages manpages-dev g++ g++-4.6 git && \
+#    \
+#    apt-get -y autoclean && apt-get -y clean && apt-get -y autoremove && rm -rf /var/lib/apt/lists/*
 
 # Melted will be run as user default in userspace
 RUN     useradd -m default
